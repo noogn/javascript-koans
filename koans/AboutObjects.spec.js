@@ -1,3 +1,5 @@
+require('chai-jasmine');
+
 describe("About Objects", function () {
 
   describe("Properties", function () {

@@ -1,15 +1,17 @@
+require('chai-jasmine');
+
 describe('About Expects', function() {
 
   // We shall contemplate truth by testing reality, via spec expectations.
   it('should expect true', function() {
 
-    // Your journey begins here: Replace the word false with true 
-    expect(false).toBeTruthy();
+    // Your journey begins here: Replace the word false with true
+    expect(true).toBeTruthy();
   });
 
   // To understand reality, we must compare our expectations against reality.
   it('should expect equality', function() {
-    var expectedValue = FILL_ME_IN;
+    var expectedValue = 2;
     var actualValue = 1 + 1;
 
     expect(actualValue === expectedValue).toBeTruthy();

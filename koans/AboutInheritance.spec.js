@@ -1,3 +1,5 @@
+require('chai-jasmine');
+
 function Muppet(age, hobby) {
   this.age = age;
   this.hobby = hobby;

@@ -1,3 +1,5 @@
+require('chai-jasmine');
+
 describe("About Functions", function() {
 
   it("should declare functions", function() {

@@ -1,4 +1,4 @@
-var _; //globals
+require('chai-jasmine');
 
 describe("About Applying What We Have Learnt", function() {
 
