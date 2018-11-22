@@ -10,11 +10,13 @@ describe("About Mutability", function() {
   });
 
   it("should understand that constructed properties are public and mutable", function () {
-    function Person(firstname, lastname)
-    {
-      this.firstname = firstname;
-      this.lastname = lastname;
+    class Person {
+      constructor(firstname, lastname) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+      }
     }
+
     var aPerson = new Person ("John", "Smith");
     aPerson.firstname = "Alan";
 
@@ -22,14 +24,16 @@ describe("About Mutability", function() {
   });
 
   it("should expect prototype properties to be public and mutable", function () {
-    function Person(firstname, lastname)
-    {
-      this.firstname = firstname;
-      this.lastname = lastname;
+    class Person {
+      constructor(firstname, lastname) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+      }
+
+      getFullName() {
+        return this.firstname + " " + this.lastname;
+      }
     }
-    Person.prototype.getFullName = function () {
-      return this.firstname + " " + this.lastname;
-    };
 
     var aPerson = new Person ("John", "Smith");
     expect(aPerson.getFullName()).toBe(FILL_ME_IN);
@@ -42,13 +46,14 @@ describe("About Mutability", function() {
   });
 
   it("should know that variables inside a constructor and constructor args are private", function () {
-    function Person(firstname, lastname)
-    {
-      var fullName = firstname + " " + lastname;
+    class Person {
+      constructor(firstname, lastname) {
+        var fullName = firstname + " " + lastname;
 
-      this.getFirstName = function () { return firstname; };
-      this.getLastName = function () { return lastname; };
-      this.getFullName = function () { return fullName; };
+        this.getFirstName = function () { return firstname; };
+        this.getLastName = function () { return lastname; };
+        this.getFullName = function () { return fullName; };
+      }
     }
     var aPerson = new Person ("John", "Smith");
 

@@ -1,29 +1,43 @@
 require('chai-jasmine');
 
-function Muppet(age, hobby) {
-  this.age = age;
-  this.hobby = hobby;
+class Muppet {
+  constructor(age, hobby) {
+    this.age = age;
+    this.hobby = hobby;
+  }
 
-  this.answerNanny = function(){
-	return "Everything's cool!";
+  answerNanny() {
+    return "Everything's cool!";
   }
 }
 
-function SwedishChef(age, hobby, mood) {
-  Muppet.call(this, age, hobby);
-  this.mood = mood;
+class SwedishChef extends Muppet {
+  constructor(age, hobby, mood) {
+    super(age, hobby);
+    this.mood = mood;
+  }
 
-  this.cook = function() {
+  cook() {
     return "Mmmm soup!";
   }
 }
 
-SwedishChef.prototype = new Muppet();
+class Gonzo extends Muppet {
+  constructor(age, hobby, trick) {
+    super(age, hobby);
+    this.trick = trick;
+  }
 
-xdescribe("About inheritance", function() {
+  doTrick() {
+    return this.trick;
+  }
+}
+
+describe("About inheritance", function() {
   beforeEach(function(){
     this.muppet = new Muppet(2, "coding");
-	  this.swedishChef = new SwedishChef(2, "cooking", "chillin");
+    this.swedishChef = new SwedishChef(2, "cooking", "chillin");
+    this.gonzo = new Gonzo(3, "daredevil performer", "eat a tire");
   });
 
   it("should be able to call a method on the derived object", function() {
@@ -35,37 +49,12 @@ xdescribe("About inheritance", function() {
   });
 
   it("should set constructor parameters on the base object", function() {
-    expect(this.swedishChef.age).toEqual(FILL_ME_IN);
+    expect(this.swedishChef.age).toEqual(2);
     expect(this.swedishChef.hobby).toEqual(FILL_ME_IN);
   });
 
   it("should set constructor parameters on the derived object", function() {
     expect(this.swedishChef.mood).toEqual(FILL_ME_IN);
-  });
-});
-
-// http://javascript.crockford.com/prototypal.html
-Object.prototype.beget = function () {
-  function F() {}
-  F.prototype = this;
-  return new F();
-}
-
-function Gonzo(age, hobby, trick) {
-  Muppet.call(this, age, hobby);
-  this.trick = trick;
-
-  this.doTrick = function() {
-    return this.trick;
-  }
-}
-
-//no longer need to call the Muppet (base type) constructor
-Gonzo.prototype = Muppet.prototype.beget();
-
-describe("About Crockford's inheritance improvement", function() {
-  beforeEach(function(){
-  this.gonzo = new Gonzo(3, "daredevil performer", "eat a tire");
   });
 
   it("should be able to call a method on the derived object", function() {
