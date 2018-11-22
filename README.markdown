@@ -16,6 +16,7 @@ you to solve more complicated problems and use more advanced techniques.
 
 ## Running the Koans
 `npm install`
+
 `npm test`
 
 ### Changelog
