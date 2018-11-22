@@ -20,10 +20,10 @@ function SwedishChef(age, hobby, mood) {
 
 SwedishChef.prototype = new Muppet();
 
-describe("About inheritance", function() {
+xdescribe("About inheritance", function() {
   beforeEach(function(){
     this.muppet = new Muppet(2, "coding");
-	this.swedishChef = new SwedishChef(2, "cooking", "chillin");
+	  this.swedishChef = new SwedishChef(2, "cooking", "chillin");
   });
 
   it("should be able to call a method on the derived object", function() {

@@ -5,7 +5,7 @@ var _; //globals
       that you would expect in Prototype.js (or Ruby), but without extending any of the built-in JavaScript objects.
       It's the tie to go along with jQuery's tux."
  */
-describe("About Higher Order Functions", function () {
+xdescribe("About Higher Order Functions", function () {
 
   it("should use filter to return array items that meet a criteria", function () {
     var numbers = [1,2,3];
